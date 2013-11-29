@@ -1,13 +1,18 @@
 
 
 import javax.swing.JFrame;
+
 import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+
 import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 	public MainFrame() {
+		
+		this.setTitle("Data Visualizer");
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -25,7 +30,7 @@ public class MainFrame extends JFrame {
 		JPanel textLegend = new JPanel();
 		textLegend.setLayout(new GridLayout(2,1));
 		textLegend.add(new LegendPane());
-		textLegend.add(new InfoPane());
+		textLegend.add(new InfoPane());  
 		textLegend.setVisible(true);
 		
 		getContentPane().add(textLegend, BorderLayout.EAST);
@@ -38,8 +43,14 @@ public class MainFrame extends JFrame {
 	
 	public static void main(String args[]){
 		
-		MainFrame frame = new MainFrame();
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				MainFrame mf = new MainFrame();
+				mf.setVisible(true);
+				mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			}
 		
+		});
 		
 	}
 
