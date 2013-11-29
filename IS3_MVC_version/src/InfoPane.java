@@ -1,4 +1,4 @@
-package is3;
+
 
 import javax.swing.JPanel;
 import javax.swing.JTextPane;

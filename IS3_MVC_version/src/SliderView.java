@@ -1,4 +1,4 @@
-package is3;
+
 
 import java.awt.Component;
 import java.awt.GridLayout;

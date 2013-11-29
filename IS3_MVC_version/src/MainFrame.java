@@ -1,4 +1,4 @@
-package is3;
+
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
