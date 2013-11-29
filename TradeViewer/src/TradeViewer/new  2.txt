@@ -1,0 +1,20 @@
+ selected(ArrayList<Integer> rows)
+ update(ArrayList<Integer> rows)
+ 
+ 
+ Reinis Elksnis
+Anyone knows how to to pan up, right, left and down for Scatterplot View in IM AX2?
+Like ·  · Follow post · 7 March at 21:36
+Seen by 119
+
+Luka Prelic ye, you have to set a new axis origin. that will move the points
+7 March at 21:47 · Like
+
+Luka Prelic once you get to q3 tell me how to do that one
+7 March at 21:50 · Like
+
+Reinis Elksnis how can I set new axis origin? If I create new Point or setX, or setY,
+ it seems that something overwrites it and nothing changes (paint() sets it to default values?).
+ 
+ 
+ http://blogs.dailybreeze.com/pets/files/import/39954-dogdrool.jpg why do you tease me human?
