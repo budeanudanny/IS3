@@ -1,6 +1,3 @@
-
-
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,6 +15,8 @@ public class CanvasPane extends JPanel implements ViewController {
   private String[] names;
 
   private String title;
+ 
+  private String[] colours = {"black","green","yellow","purple","blue","red"};
 
   public CanvasPane(double[] v, String[] n, String t, Model m) {
 	model = m;
@@ -53,7 +52,7 @@ public class CanvasPane extends JPanel implements ViewController {
     int y = titleFontMetrics.getAscent();
     int x = (clientWidth - titleWidth) / 2;
     g.setFont(titleFont);
-    g.drawString(title, x, y);
+    //g.drawString(title, x, y);
 
     int top = titleFontMetrics.getHeight();
     int bottom = labelFontMetrics.getHeight();
@@ -73,14 +72,34 @@ public class CanvasPane extends JPanel implements ViewController {
         valueY += (int) (maxValue * scale);
         height = -height;
       }
-
-      g.setColor(Color.red);
-      g.fillRect(valueX, valueY, barWidth - 2, height);
-      g.setColor(Color.black);
-      g.drawRect(valueX, valueY, barWidth - 2, height);
-      int labelWidth = labelFontMetrics.stringWidth(names[i]);
-      x = i * barWidth + (barWidth - labelWidth) / 2;
-      g.drawString(names[i], x, y);
+      //implementing independent colour of each bar
+      if(i%2 ==0){
+	      g.setColor(Color.blue);
+	      g.fillRect(valueX, valueY, barWidth - 2, height);
+	      g.setColor(Color.black);
+	      g.drawRect(valueX, valueY, barWidth - 2, height);
+	      int labelWidth = labelFontMetrics.stringWidth(names[i]);
+	      x = i * barWidth + (barWidth - labelWidth) / 2;
+	      g.drawString(names[i], x, y);
+      }else if(i%3 == 0){
+    	  
+    	  g.setColor(Color.yellow);
+	      g.fillRect(valueX, valueY, barWidth - 2, height);
+	      g.setColor(Color.black);
+	      g.drawRect(valueX, valueY, barWidth - 2, height);
+	      int labelWidth = labelFontMetrics.stringWidth(names[i]);
+	      x = i * barWidth + (barWidth - labelWidth) / 2;
+	      g.drawString(names[i], x, y);
+      }else {
+    	  g.setColor(Color.orange);
+	      g.fillRect(valueX, valueY, barWidth - 2, height);
+	      g.setColor(Color.black);
+	      g.drawRect(valueX, valueY, barWidth - 2, height);
+	      int labelWidth = labelFontMetrics.stringWidth(names[i]);
+	      x = i * barWidth + (barWidth - labelWidth) / 2;
+	      g.drawString(names[i], x, y);
+    	  
+      }
     }
   }
 	
