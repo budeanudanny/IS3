@@ -30,7 +30,9 @@ public class MainFrame extends JFrame {
 		
 		
 		//create canvas and add to the model
-		CanvasPane canvas = new CanvasPane(model);
+		double[] values = {13, 9, 12.4, 10, 2, 1, 6};
+		String[] names = {"Canada", "USA", "Nigeria", "Japan", "Austria", "England", "Russia"};
+		CanvasPane canvas = new CanvasPane(values, names,"Bar Chart", model);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		//model.addChildren(canvas);
 		
