@@ -34,7 +34,7 @@ public class ComboBoxPane extends JPanel {
 	
 	this.setLayout(new GridLayout(2,1));
 	
-	JComboBox box1 = new JComboBox(array1);
+	JComboBox box1 = new JComboBox(array2);
 	box1.addActionListener(new ActionSelect());
 	box1.setName("box1");
 	JComboBox box2 = new JComboBox(array1);
@@ -89,19 +89,19 @@ public class ComboBoxPane extends JPanel {
 			
 			
 			
-			int v=0;
+/*			int v=0;
 			for (int i=0; i<array1.length; i++){
 				if (array1[i].compareTo((String) value) == 0)
 					v=i;
-			}
+			} */
 			
 			if (b.getName().compareTo("box1")==0){
-				sliders.update("b1",v);
+				sliders.update("b1",index);
 				parent.setSelectedItem1(++index);
 			}
 			
 			else{
-				sliders.update("b2", v);
+				sliders.update("b2", index);
 				parent.setSelectedItem2(index);
 				}
 			
