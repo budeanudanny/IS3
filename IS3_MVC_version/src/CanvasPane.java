@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -10,38 +11,75 @@ public class CanvasPane extends JPanel implements ViewController {
   
 	private Model model;
 
-	private double[] values;
-
+	private ArrayList<Double> valuesY;
+	private ArrayList<Double> valuesX;
 	private String[] names;
 
 	private String title;
  
 	private String[] colours = {"black","green","yellow","purple","blue","red"};
+	
+	protected int selectedItem1 = -1;
+	protected int selectedItem2 = -1;
 
-	public CanvasPane(double[] v, String[] n, String t, Model m) {
-		model = m;
-	    names = n;
-	    values = v;
-	    title = t;
+	public int getSelectedItem1() {
+		return selectedItem1;
 	}
 
+	public void setSelectedItem1(int selectedItem1) {
+		this.selectedItem1 = selectedItem1;
+	}
+
+	public int getSelectedItem2() {
+		return selectedItem2;
+	}
+
+	public void setSelectedItem2(int selectedItem2) {
+		this.selectedItem2 = selectedItem2;
+	}
+	
+	
+
+	public CanvasPane(Model m) {
+		model = m;
+	 }
+
+	public void createValues(){
+		if (selectedItem1 == -1 || selectedItem2 == -1)
+			return;
+		
+		valuesY = new ArrayList<Double>();
+		valuesX = new ArrayList<Double>();
+	
+		
+		for (String key : model.getData().keySet())
+			valuesY.add(model.getData().get(key).get(selectedItem1));
+		
+		System.out.println(valuesY);
+		
+		for (String key : model.getData().keySet())
+			valuesX.add(model.getData().get(key).get(selectedItem2));
+		
+		System.out.println(valuesX);
+	}
+	
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
-	    if (values == null || values.length == 0)
+	    if (valuesY == null || valuesY.size() == 0)
 	      return;
 	    double minValue = 0;
 	    double maxValue = 0;
-	    for (int i = 0; i < values.length; i++) {
-	      if (minValue > values[i])
-	        minValue = values[i];
-	      if (maxValue < values[i])
-	        maxValue = values[i];
+	    for (int i = 0; i < valuesY.size(); i++) {
+	      if (minValue > valuesY.get(i))
+	        minValue = valuesY.get(i);
+	      if (maxValue < valuesY.get(i))
+	        maxValue = valuesY.get(i);
     }
 
     Dimension d = getSize();
     int clientWidth = d.width;
     int clientHeight = d.height;
-    int barWidth = clientWidth / values.length;
+    int barWidth = clientWidth / valuesY.size();
 
     Font titleFont = new Font("SansSerif", Font.BOLD, 20);
     FontMetrics titleFontMetrics = g.getFontMetrics(titleFont);
@@ -62,12 +100,12 @@ public class CanvasPane extends JPanel implements ViewController {
     y = clientHeight - labelFontMetrics.getDescent();
     g.setFont(labelFont);
 
-    for (int i = 0; i < values.length; i++) {
+    for (int i = 0; i < valuesY.size(); i++) {
 	    int valueX = i * barWidth + 1;
 	    int valueY = top;
-	    int height = (int) (values[i] * scale);
-	    if (values[i] >= 0)
-	    	valueY += (int) ((maxValue - values[i]) * scale);
+	    int height = (int) (valuesY.get(i) * scale);
+	    if (valuesY.get(i) >= 0)
+	    	valueY += (int) ((maxValue - valuesY.get(i)) * scale);
 	    else {
 	    	valueY += (int) (maxValue * scale);
 	    	height = -height;
@@ -106,6 +144,8 @@ public class CanvasPane extends JPanel implements ViewController {
 	public void update(){
 		
 	}
+	
+	
 	
 	
 	

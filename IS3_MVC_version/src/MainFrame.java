@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 		//create a new model to process the file and add kids
 		String filename="";
 		Model model = new Model("data.csv");
-		
+		System.out.println(model.getData().toString());
 		this.setTitle("Data Visualizer");
 		this.setPreferredSize(new Dimension(1100,700));
 		//this.setResizable(false);  //in case we want to not make it resizable and not bother with dynamically resizable
@@ -28,17 +28,24 @@ public class MainFrame extends JFrame {
 		SliderView sliders = new SliderView(model);
 		panel.add(sliders);
 		
-		ComboBoxPane comboBox = new ComboBoxPane(model, sliders);
+	
+		
+		
+		CanvasPane canvas = new CanvasPane(model);
+		getContentPane().add(canvas, BorderLayout.CENTER);
+		
+		//model.addChildren(canvas);
+		
+		ComboBoxPane comboBox = new ComboBoxPane(model, sliders, canvas);
 		panel.add(comboBox);
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
 		
-		//create canvas and add to the model
-		double[] values = {13, 9, 12.4, 10, 2, 1, 6};
-		String[] names = {"Canada", "USA", "Nigeria", "Japan", "Austria", "England", "Russia"};
-		CanvasPane canvas = new CanvasPane(values, names,"", model);
-		getContentPane().add(canvas, BorderLayout.CENTER);
-		//model.addChildren(canvas);
+	
+		
+	
+		
+		
 		
 		JPanel textLegend = new JPanel();
 		textLegend.setLayout(new GridLayout(2,1));

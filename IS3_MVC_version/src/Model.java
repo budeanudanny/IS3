@@ -44,9 +44,9 @@ public class Model {
 	            row.add(segmentedLine.nextToken());
 	        }
 	        String key = row.get(0);
-	        System.out.println(key);
+	        //System.out.println(key);
 	        row.remove(0); //because the first element will be the country/key
-	        System.out.println(row);
+	        //System.out.println(row);
 	        ArrayList<Double> values = new ArrayList<Double>();
 	        for(String s : row){
 	        	Double aux = Double.parseDouble(s); //parse the remaining entries in row to double and 
