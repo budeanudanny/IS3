@@ -69,6 +69,7 @@ public class Model {
 
 	            // read labels line
 	            readHeader(buffer.readLine(), headers);
+	            
 	            while ((line = buffer.readLine()) != null) {
 	                // now read a line of data
 	                assignValuesToKey(line, data);
