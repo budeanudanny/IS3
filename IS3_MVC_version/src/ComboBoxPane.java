@@ -104,7 +104,11 @@ public class ComboBoxPane extends JPanel {
 				sliders.update("b2", v);
 				parent.setSelectedItem2(index);
 				}
+			
+			//after both options in the combo boxes have been selected pass the values towards the canvas pane
+			//and then repaint the bar chart - booyah!
 			parent.createValues();
+			parent.repaint();
 			
 		}
 		
