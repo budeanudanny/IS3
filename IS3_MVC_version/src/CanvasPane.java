@@ -8,34 +8,34 @@ import javax.swing.JPanel;
 
 public class CanvasPane extends JPanel implements ViewController {
   
-  private Model model;
+	private Model model;
 
-  private double[] values;
+	private double[] values;
 
-  private String[] names;
+	private String[] names;
 
-  private String title;
+	private String title;
  
-  private String[] colours = {"black","green","yellow","purple","blue","red"};
+	private String[] colours = {"black","green","yellow","purple","blue","red"};
 
-  public CanvasPane(double[] v, String[] n, String t, Model m) {
-	model = m;
-    names = n;
-    values = v;
-    title = t;
-  }
+	public CanvasPane(double[] v, String[] n, String t, Model m) {
+		model = m;
+	    names = n;
+	    values = v;
+	    title = t;
+	}
 
-  public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    if (values == null || values.length == 0)
-      return;
-    double minValue = 0;
-    double maxValue = 0;
-    for (int i = 0; i < values.length; i++) {
-      if (minValue > values[i])
-        minValue = values[i];
-      if (maxValue < values[i])
-        maxValue = values[i];
+	public void paintComponent(Graphics g) {
+	    super.paintComponent(g);
+	    if (values == null || values.length == 0)
+	      return;
+	    double minValue = 0;
+	    double maxValue = 0;
+	    for (int i = 0; i < values.length; i++) {
+	      if (minValue > values[i])
+	        minValue = values[i];
+	      if (maxValue < values[i])
+	        maxValue = values[i];
     }
 
     Dimension d = getSize();
@@ -63,35 +63,35 @@ public class CanvasPane extends JPanel implements ViewController {
     g.setFont(labelFont);
 
     for (int i = 0; i < values.length; i++) {
-      int valueX = i * barWidth + 1;
-      int valueY = top;
-      int height = (int) (values[i] * scale);
-      if (values[i] >= 0)
-        valueY += (int) ((maxValue - values[i]) * scale);
-      else {
-        valueY += (int) (maxValue * scale);
-        height = -height;
-      }
-      //implementing independent colour of each bar
-      if(i%2 ==0){
-	      g.setColor(Color.blue);
-	      g.fillRect(valueX, valueY, barWidth - 2, height);
-	      g.setColor(Color.black);
-	      g.drawRect(valueX, valueY, barWidth - 2, height);
-	      int labelWidth = labelFontMetrics.stringWidth(names[i]);
-	      x = i * barWidth + (barWidth - labelWidth) / 2;
-	      g.drawString(names[i], x, y);
-      }else if(i%3 == 0){
+	    int valueX = i * barWidth + 1;
+	    int valueY = top;
+	    int height = (int) (values[i] * scale);
+	    if (values[i] >= 0)
+	    	valueY += (int) ((maxValue - values[i]) * scale);
+	    else {
+	    	valueY += (int) (maxValue * scale);
+	    	height = -height;
+	    }
+	    //implementing independent colour of each bar
+	    if(i%2 ==0){
+			g.setColor(Color.blue);
+			g.fillRect(valueX, valueY, barWidth - 2, height);
+			g.setColor(Color.black);
+			g.drawRect(valueX, valueY, barWidth - 2, height);
+			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			x = i * barWidth + (barWidth - labelWidth) / 2;
+			g.drawString(names[i], x, y);
+	    }else if(i%3 == 0){
     	  
-    	  g.setColor(Color.yellow);
-	      g.fillRect(valueX, valueY, barWidth - 2, height);
-	      g.setColor(Color.black);
-	      g.drawRect(valueX, valueY, barWidth - 2, height);
-	      int labelWidth = labelFontMetrics.stringWidth(names[i]);
-	      x = i * barWidth + (barWidth - labelWidth) / 2;
-	      g.drawString(names[i], x, y);
-      }else {
-    	  g.setColor(Color.orange);
+	    	  g.setColor(Color.yellow);
+		      g.fillRect(valueX, valueY, barWidth - 2, height);
+		      g.setColor(Color.black);
+		      g.drawRect(valueX, valueY, barWidth - 2, height);
+		      int labelWidth = labelFontMetrics.stringWidth(names[i]);
+		      x = i * barWidth + (barWidth - labelWidth) / 2;
+		      g.drawString(names[i], x, y);
+	    }else {
+    	  g.setColor(Color.red);
 	      g.fillRect(valueX, valueY, barWidth - 2, height);
 	      g.setColor(Color.black);
 	      g.drawRect(valueX, valueY, barWidth - 2, height);

@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 		
 		//create a new model to process the file and add kids
 		String filename="";
-		Model model = new Model(filename);
+		Model model = new Model("data.csv");
 		
 		this.setTitle("Data Visualizer");
 		this.setPreferredSize(new Dimension(1100,700));
