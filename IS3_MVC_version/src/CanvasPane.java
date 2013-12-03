@@ -65,12 +65,12 @@ public class CanvasPane extends JPanel implements ViewController {
 		for (String key : model.getData().keySet())
 			valuesY.add(model.getData().get(key).get(selectedItem1));
 		
-		System.out.println(valuesY);
+		//System.out.println(valuesY);
 		
 		for (String key : model.getData().keySet())
 			valuesX.add(model.getData().get(key).get(selectedItem2));
 		
-		System.out.println(valuesX);
+		//System.out.println(valuesX);
 	}
 	
 	public void paintComponent(Graphics g) {
