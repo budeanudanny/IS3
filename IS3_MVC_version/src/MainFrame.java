@@ -16,9 +16,9 @@ public class MainFrame extends JFrame {
 		//create a new model to process the file and add kids
 		String filename="";
 		Model model = new Model("data.csv");
-		System.out.println(model.getData().toString());
+		//System.out.println(model.getData().toString());
 		this.setTitle("Data Visualizer");
-		this.setPreferredSize(new Dimension(1100,700));
+		this.setPreferredSize(new Dimension(1800,900));
 		//this.setResizable(false);  //in case we want to not make it resizable and not bother with dynamically resizable
 		//components even though the bar chart is behaving like that if you resize the window
 		getContentPane().setLayout(new BorderLayout(0, 0));

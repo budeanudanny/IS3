@@ -14,7 +14,7 @@ public class CanvasPane extends JPanel implements ViewController {
 	private ArrayList<Double> valuesY;
 	private ArrayList<Double> valuesX;
 	private String[] names;
-
+	
 	private String title;
  
 	private String[] colours = {"black","green","yellow","purple","blue","red"};
@@ -22,12 +22,12 @@ public class CanvasPane extends JPanel implements ViewController {
 	protected int selectedItem1 = -1;
 	protected int selectedItem2 = -1;
 
-	public int getSelectedItem1() {
-		return selectedItem1;
-	}
-
 	public void setSelectedItem1(int selectedItem1) {
 		this.selectedItem1 = selectedItem1;
+	}
+
+	public int getSelectedItem1() {
+		return selectedItem1;
 	}
 
 	public int getSelectedItem2() {
@@ -42,8 +42,18 @@ public class CanvasPane extends JPanel implements ViewController {
 
 	public CanvasPane(Model m) {
 		model = m;
+		title = "";
+		names = new String[model.getData().keySet().size()];
+		createNames();
 	 }
 
+	public void createNames(){
+		//aci trebe sa bagam si info din slidere
+		int k = 0;
+		for(String key : model.getData().keySet())
+			names[k++] = key;
+	}
+	
 	public void createValues(){
 		if (selectedItem1 == -1 || selectedItem2 == -1)
 			return;

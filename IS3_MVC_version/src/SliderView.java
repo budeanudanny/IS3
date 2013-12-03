@@ -2,7 +2,10 @@
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
@@ -31,6 +34,23 @@ public class SliderView extends JPanel {
         
         this.setVisible(true);
         
+    }
+    
+    private class Modified implements ActionListener{
+    	double min = -1D,max = -1D;
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JSlider s = (JSlider) e.getSource();
+			if (s.getName().equals(jSlider1)){
+				min = s.getValue();
+			}else if (s.getName().equals(jSlider2)){
+				max = s.getValue();
+			}
+			
+		}
+    
+    
+    
     }
     
     public void update(String box, int value){
@@ -64,5 +84,7 @@ public class SliderView extends JPanel {
         	//jSlider2.createStandardLabels(50);
     	}
     }
+    
+    
 
 }
