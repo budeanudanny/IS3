@@ -97,6 +97,7 @@ public class ComboBoxPane extends JPanel {
 			
 			if (b.getName().compareTo("box1")==0){
 				sliders.update("b1",index);
+				System.out.println("sel item =" + index);
 				parent.setSelectedItem1(index);
 				model.setSelectedYItem(index);
 			}

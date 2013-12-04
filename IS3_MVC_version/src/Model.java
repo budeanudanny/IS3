@@ -101,12 +101,13 @@ public class Model {
 	
 	
 	public void updateRestData(int min, int max){
-		restrictedData = data;
+		restrictedData = new Hashtable<String, ArrayList<Double>>();
 		for (String key : data.keySet()){
-			double d = data.get(key).get(selectedYItem-1);
-			if (d > max || d < min)
-				restrictedData.remove(key);
+			double d = data.get(key).get(selectedYItem+1);
+			if (d < max && d > min)
+				restrictedData.put(key,data.get(key));
 		}
+		//System.out.println(restrictedData.toString());
 		
 		
 		

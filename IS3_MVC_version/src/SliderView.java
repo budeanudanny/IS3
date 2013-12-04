@@ -109,7 +109,6 @@ public class SliderView extends JPanel {
         jSlider2.setPaintLabels(true);
     	jSlider2.addChangeListener(new Modified());
     	jSlider2.setName("slider2");
-    	
         this.add(jSlider1);
         this.add(jSlider2);
         
@@ -136,13 +135,13 @@ public class SliderView extends JPanel {
     	}
     	else if (value == 1){
     		min = 0;
-    		max= 70;	//70000
-    		interval = 10;	//70000
+    		max= 70000;	//70000
+    		interval = 10000;	//70000
     	}
     	else if (value ==2){
     		min = 0;
     		max= 1500000;
-    		interval = 200000;
+    		interval = 300000;
     	}
     	else if (value == 3){
     		min = 0;
@@ -169,10 +168,10 @@ public class SliderView extends JPanel {
     		max= 580;
     		interval = 100;
     	}
-    	else if (value ==8){
-    		min = 15;
-    		max= 75;
-    		interval = 20;
+    	else if (value ==8){//team size
+    		min = 0;
+    		max= 600;
+    		interval = 100;
     	}
     	else if (value == 9){
     		min = 0;
@@ -203,7 +202,7 @@ public class SliderView extends JPanel {
     	if (box.compareTo("b1")==0){
     		jSlider1.setMinimum(min);
     		jSlider1.setMaximum(max);
-        	jSlider1.setMajorTickSpacing(5);
+        	jSlider1.setMajorTickSpacing(interval);
     		jSlider1.setPaintTicks(true);
     		jSlider1.setPaintLabels(true);
 
@@ -217,6 +216,7 @@ public class SliderView extends JPanel {
     		jSlider2.setPaintLabels(true);
 
     	}
+      	
     }
     
     
@@ -234,13 +234,19 @@ public class SliderView extends JPanel {
 			else{
 				if (s.getName().equals("slider1")){
 					minY = s.getValue();
+					System.out.println("low:"+s.getValue());
 					maxY = s.getUpperValue();
+					System.out.println("high:"+s.getUpperValue());
 					parent.createValues(minY, maxY, -1, -1);
+					model.updateRestData(minY, maxY);
+					parent.createNames(minY, maxY);
+					
 					parent.repaint();
 					}else if (s.getName().equals("slider2")){
 					minX = s.getValue();
 					maxY = s.getUpperValue();
 					parent.createValues(-1, -1, minX, maxX);
+					model.updateRestData(minX, maxX);
 					parent.repaint();
 					
 				}
