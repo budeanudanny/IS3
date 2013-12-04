@@ -59,7 +59,7 @@ public class MainFrame extends JFrame {
 		textLegend.add(info);  
 		textLegend.setVisible(true);*/
 		
-		getContentPane().add(info, BorderLayout.SOUTH);
+		getContentPane().add(info, BorderLayout.EAST);
 
 		this.pack();
 		this.setLocationRelativeTo(null); //this will center the main window on the screen :D

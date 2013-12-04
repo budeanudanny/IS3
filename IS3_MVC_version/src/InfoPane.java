@@ -14,7 +14,8 @@ public class InfoPane extends JPanel implements ViewController{
 	InfoPane(Model m){
 		model=m;
 		JTextArea info = new JTextArea("Country: \n" + "Attribute1: \n" + "Attribute2: ");
-		info.setVisible(true);
+		this.add(info);
+		this.setVisible(true);
 		//info.setEditable(false);
 	}
 	

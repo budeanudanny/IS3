@@ -212,9 +212,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
  			g.fillRect(valueX, valueY, barWidth - 2, height);
 			g.drawRect(valueX, valueY, barWidth - 2, height);
 			g.setColor(Color.black); //color of the text
-			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			/*int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
-			g.drawString(names[i], x, y);
+			g.drawString(names[i], x, y);*/
 			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -226,9 +226,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 		    g.fillRect(valueX, valueY, barWidth - 2, height);
 		    g.drawRect(valueX, valueY, barWidth - 2, height);
 		    g.setColor(Color.black);
-		    int labelWidth = labelFontMetrics.stringWidth(names[i]);
-		    x = i * barWidth + (barWidth - labelWidth) / 2;
-		    g.drawString(names[i], x, y);
+		    /*int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			x = i * barWidth + (barWidth - labelWidth) / 2;
+			g.drawString(names[i], x, y);*/
 		    vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -240,9 +240,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 			g.fillRect(valueX, valueY, barWidth - 2, height);
 			g.drawRect(valueX, valueY, barWidth - 2, height);
 			g.setColor(Color.black);
-			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			/*int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
-			g.drawString(names[i], x, y);
+			g.drawString(names[i], x, y);*/
 			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -254,9 +254,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 			g.fillRect(valueX, valueY, barWidth - 2, height);
 			g.drawRect(valueX, valueY, barWidth - 2, height);
 			g.setColor(Color.black);
-			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			/*int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
-			g.drawString(names[i], x, y);
+			g.drawString(names[i], x, y);*/
 			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -268,9 +268,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 			g.fillRect(valueX, valueY, barWidth - 2, height);
 			g.drawRect(valueX, valueY, barWidth - 2, height);
 			g.setColor(Color.black);
-			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			/*int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
-			g.drawString(names[i], x, y);
+			g.drawString(names[i], x, y);*/
 			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -282,9 +282,9 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 			g.fillRect(valueX, valueY, barWidth - 2, height);
 			g.drawRect(valueX, valueY, barWidth - 2, height);
 			g.setColor(Color.black);
-			int labelWidth = labelFontMetrics.stringWidth(names[i]);
+			/*int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
-			g.drawString(names[i], x, y);
+			g.drawString(names[i], x, y);*/
 			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
 					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
 					model.getData().get(names[i]).get(selectedItem2)));
@@ -310,10 +310,13 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 				clickedVertRect = new VertRect(v.getRect(),v.getCountry(),v.getAttr1(),v.getAttr2(),
 						v.getValAttr1(),v.getValAttr2());
 			}
-		/*String s = clickedVertRect.getCountry() + "\n" +
+		String s = clickedVertRect.getCountry() + "\n" +
 				   clickedVertRect.getAttr1() + ": " + clickedVertRect.getValAttr1() + "\n" +
 				   clickedVertRect.getAttr2() + ": " + clickedVertRect.getValAttr2();
-		info.getInfo().setText(s);*/
+		
+		System.out.println(info == null);
+		//info.getInfo().setText(s);
+		
 		System.out.println("the x is " + e.getX() + " and the y is " + e.getY());
 		System.out.println(clickedVertRect);
 		
