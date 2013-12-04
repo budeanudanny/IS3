@@ -9,11 +9,12 @@ import java.util.StringTokenizer;
 
 public class Model {
 
+	private int selectedYItem;
 	private ArrayList children;
 	private String file;
 	protected Hashtable<String, ArrayList<Double>> data = new Hashtable<String, ArrayList<Double>>();
 	protected ArrayList<String> headers = new ArrayList<String>();
-	
+	protected Hashtable<String, ArrayList<Double>> restrictedData = new Hashtable<String, ArrayList<Double>>();
 	public Model(String filename){
 		file=filename;
 		loadFile(file);
@@ -88,7 +89,28 @@ public class Model {
 	public Hashtable<String, ArrayList<Double>> getData() {
 		return data;
 	}
+	
+	public Hashtable<String, ArrayList<Double>> getRestData() {
+		return restrictedData;
+	}
 
+	public void setSelectedYItem(int i){
+		selectedYItem = i;
+	}
+	
+	
+	
+	public void updateRestData(int min, int max){
+		restrictedData = data;
+		for (String key : data.keySet()){
+			double d = data.get(key).get(selectedYItem-1);
+			if (d > max || d < min)
+				restrictedData.remove(key);
+		}
+		
+		
+		
+	}
 	public void setData(Hashtable<String, ArrayList<Double>> data) {
 		this.data = data;
 	}

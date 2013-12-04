@@ -40,8 +40,6 @@ public class MainFrame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1, 2, 0, 0));
-		SliderView sliders = new SliderView(model);
-		panel.add(sliders);
 		
 	
 		
@@ -51,10 +49,12 @@ public class MainFrame extends JFrame {
 		info.setVisible(true);
 		//model.addChildren(info);
 		
-		CanvasPane canvas = new CanvasPane(model, info, sliders);
+		CanvasPane canvas = new CanvasPane(model, info);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		
 		//model.addChildren(canvas);
+		SliderView sliders = new SliderView(model,canvas);
+		panel.add(sliders);
 		
 		ComboBoxPane comboBox = new ComboBoxPane(model, sliders, canvas);
 		panel.add(comboBox);

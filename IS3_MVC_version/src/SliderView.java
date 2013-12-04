@@ -16,10 +16,85 @@ public class SliderView extends JPanel {
     RangeSlider jSlider1;
     RangeSlider  jSlider2;
     Model model;
+    private int minX,minY,maxX,maxY;
+    CanvasPane parent;
     
     
-    SliderView(Model m){
+    public int getMinX() {
+		return minX;
+	}
+
+
+
+
+
+
+	public void setMinX(int minX) {
+		this.minX = minX;
+	}
+
+
+
+
+
+
+	public int getMinY() {
+		return minY;
+	}
+
+
+
+
+
+
+	public void setMinY(int minY) {
+		this.minY = minY;
+	}
+
+
+
+
+
+
+	public int getMaxX() {
+		return maxX;
+	}
+
+
+
+
+
+
+	public void setMaxX(int maxX) {
+		this.maxX = maxX;
+	}
+
+
+
+
+
+
+	public int getMaxY() {
+		return maxY;
+	}
+
+
+
+
+
+
+	public void setMaxY(int maxY) {
+		this.maxY = maxY;
+	}
+
+
+
+
+
+
+	SliderView(Model m, CanvasPane cp){
     	model=m;
+    	parent = cp;
     	this.setLayout(new GridLayout(2,1));
     	
     	jSlider1 = new RangeSlider();
@@ -146,7 +221,7 @@ public class SliderView extends JPanel {
     
     
     private class Modified implements ChangeListener{
-    	double min = -1D,max = -1D;
+    	
 
 		public void stateChanged(ChangeEvent e) {
 
@@ -158,13 +233,17 @@ public class SliderView extends JPanel {
 			}
 			else{
 				if (s.getName().equals("slider1")){
-					min = s.getValue();
-					max = s.getUpperValue();
-				}else if (s.getName().equals(jSlider2)){
-					min = s.getValue();
-					max = s.getUpperValue();
+					minY = s.getValue();
+					maxY = s.getUpperValue();
+					parent.createValues(minY, maxY, -1, -1);
+					parent.repaint();
+					}else if (s.getName().equals("slider2")){
+					minX = s.getValue();
+					maxY = s.getUpperValue();
+					parent.createValues(-1, -1, minX, maxX);
+					parent.repaint();
+					
 				}
-			// TODO Auto-generated method stub
 			}
 		}
     

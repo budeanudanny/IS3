@@ -25,6 +25,7 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 	protected int selectedItem2 = -1;
 	private InfoPane info;
 	
+	
 	//class in which we store each vertical bar that is created alongside with its properties
 	class VertRect{
 		
@@ -121,12 +122,13 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 	
 	
 
-	public CanvasPane(Model m, InfoPane i, SliderView s) {
+	public CanvasPane(Model m, InfoPane i) {
 		model = m;
 		title = "";
 		names = new String[model.getData().keySet().size()];
 		createNames();
 		addMouseListener(this);
+		
 		info = i;
 	 }
 
@@ -137,22 +139,29 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 			names[k++] = key;
 	}
 	
-	public void createValues(){
+	public void createValues(int minY, int maxY, int minX, int maxX){
 		if (selectedItem1 == -1 || selectedItem2 == -1)
 			return;
 		
 		valuesForY = new ArrayList<Double>();
 		valuesForX = new ArrayList<Double>();
 	
-		
-		for (String key : model.getData().keySet()){
-			valuesForY.add(model.getData().get(key).get(selectedItem1+1));
-			System.out.println(model.getData().get(key));
+		if (minY == maxY)
+			for (String key : model.getData().keySet())
+				valuesForY.add(model.getData().get(key).get(selectedItem1-1));
+		else{
+			for (String key : model.getRestData().keySet())
+				valuesForY.add(model.getRestData().get(key).get(selectedItem1-1));
 		}
+		
+		
+		
+		
+		
 		//System.out.println(valuesY);
 		
 		for (String key : model.getData().keySet())
-			valuesForX.add(model.getData().get(key).get(selectedItem2));
+			valuesForX.add(model.getData().get(key).get(selectedItem2-1));
 		
 		//System.out.println(valuesX);
 	}

@@ -98,6 +98,7 @@ public class ComboBoxPane extends JPanel {
 			if (b.getName().compareTo("box1")==0){
 				sliders.update("b1",index);
 				parent.setSelectedItem1(index);
+				model.setSelectedYItem(index);
 			}
 			
 			else{
@@ -107,7 +108,7 @@ public class ComboBoxPane extends JPanel {
 			
 			//after both options in the combo boxes have been selected pass the values towards the canvas pane
 			//and then repaint the bar chart - booyah!
-			parent.createValues();
+			parent.createValues(-1,-1,-1,-1);
 			parent.repaint();
 			
 		}
