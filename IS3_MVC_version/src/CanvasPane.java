@@ -15,7 +15,7 @@ public class CanvasPane extends JPanel implements ViewController {
 	private ArrayList<Double> valuesForY;
 	private ArrayList<Double> valuesForX;
 	private String[] names;
-	private ArrayList<Rectangle> vertBars = new ArrayList<Rectangle>();
+	private ArrayList<VertRect> vertBars = new ArrayList<VertRect>();
 	
 	private String title;
  
@@ -23,6 +23,83 @@ public class CanvasPane extends JPanel implements ViewController {
 	
 	protected int selectedItem1 = -1;
 	protected int selectedItem2 = -1;
+	
+	class VertRect{
+		
+		protected Rectangle rect;
+		protected String country;
+		protected String attr1;
+		protected String attr2;
+		protected double valAttr1;
+		protected double valAttr2;
+		
+		protected VertRect(Rectangle r, String c, String a1, String a2, double v1, double v2){
+			
+			rect = r;
+			country = c;
+			attr1 = a1;
+			attr2 = a2;
+			valAttr1 = v1;
+			valAttr2 = v2;
+			
+			
+		}
+
+		public Rectangle getRect() {
+			return rect;
+		}
+
+		public void setRect(Rectangle rect) {
+			this.rect = rect;
+		}
+
+		public String getCountry() {
+			return country;
+		}
+
+		public void setCountry(String country) {
+			this.country = country;
+		}
+
+		public String getAttr1() {
+			return attr1;
+		}
+
+		public void setAttr1(String attr1) {
+			this.attr1 = attr1;
+		}
+
+		public String getAttr2() {
+			return attr2;
+		}
+
+		public void setAttr2(String attr2) {
+			this.attr2 = attr2;
+		}
+
+		public double getValAttr1() {
+			return valAttr1;
+		}
+
+		public void setValAttr1(double valAttr1) {
+			this.valAttr1 = valAttr1;
+		}
+
+		public double getValAttr2() {
+			return valAttr2;
+		}
+
+		public void setValAttr2(double valAttr2) {
+			this.valAttr2 = valAttr2;
+		}
+		
+		public String toString(){
+			String s = "";
+			s = s + getRect() + ", " + getCountry() + ", " + getAttr1() + ", " + getValAttr1() 
+					+ ", " + getAttr2() + ", " + getValAttr2();
+			return s;
+		}
+	}
 
 	public void setSelectedItem1(int selectedItem1) {
 		this.selectedItem1 = selectedItem1;
@@ -134,7 +211,9 @@ public class CanvasPane extends JPanel implements ViewController {
 			int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
 			g.drawString(names[i], x, y);
-			vertBars.add(r);
+			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
 			
 	    }else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==2){
 	    	// 2 = Africa = Black *wink wink*
@@ -146,7 +225,9 @@ public class CanvasPane extends JPanel implements ViewController {
 		    int labelWidth = labelFontMetrics.stringWidth(names[i]);
 		    x = i * barWidth + (barWidth - labelWidth) / 2;
 		    g.drawString(names[i], x, y);
-		    vertBars.add(r);
+		    vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
 		    
 	    }else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==3){
 	    	// 3 = Australia = Red
@@ -158,7 +239,9 @@ public class CanvasPane extends JPanel implements ViewController {
 			int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
 			g.drawString(names[i], x, y);
-			vertBars.add(r);
+			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
     	
 	    }else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==4){
 	    	// 4 = North America = Blue
@@ -170,7 +253,9 @@ public class CanvasPane extends JPanel implements ViewController {
 			int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
 			g.drawString(names[i], x, y);
-			vertBars.add(r);
+			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
     	
 	    }else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==5){
 	    	// 5 = Asia = Yellow *wink wink*
@@ -182,7 +267,9 @@ public class CanvasPane extends JPanel implements ViewController {
 			int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
 			g.drawString(names[i], x, y);
-			vertBars.add(r);
+			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
     	
 	    }else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==6){
 	    	// 6 = South America = Magenta
@@ -194,12 +281,14 @@ public class CanvasPane extends JPanel implements ViewController {
 			int labelWidth = labelFontMetrics.stringWidth(names[i]);
 			x = i * barWidth + (barWidth - labelWidth) / 2;
 			g.drawString(names[i], x, y);
-			vertBars.add(r);
+			vertBars.add(new VertRect(r, names[i], model.getHeaders().get(selectedItem1), 
+					model.getHeaders().get(selectedItem2+1), model.getData().get(names[i]).get(selectedItem1-1),
+					model.getData().get(names[i]).get(selectedItem2)));
     	
 	    }
     }
-    
-    System.out.println(vertBars.toString());
+    for(VertRect v : vertBars)
+    	System.out.println(v.toString());
   }
 	
 	public void update(){
