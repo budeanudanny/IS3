@@ -4,11 +4,14 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 
-public class CanvasPane extends JPanel implements ViewController {
+public class CanvasPane extends JPanel implements ViewController, MouseListener {
   
 	private Model model;
 
@@ -16,14 +19,13 @@ public class CanvasPane extends JPanel implements ViewController {
 	private ArrayList<Double> valuesForX;
 	private String[] names;
 	private ArrayList<VertRect> vertBars = new ArrayList<VertRect>();
-	
+	private VertRect clickedVertRect;
 	private String title;
- 
-	//private String[] colours = {"black","green","yellow","purple","blue","red"};
-	
 	protected int selectedItem1 = -1;
 	protected int selectedItem2 = -1;
+	private InfoPane info;
 	
+	//class in which we store each vertical bar that is created alongside with its properties
 	class VertRect{
 		
 		protected Rectangle rect;
@@ -119,11 +121,13 @@ public class CanvasPane extends JPanel implements ViewController {
 	
 	
 
-	public CanvasPane(Model m) {
+	public CanvasPane(Model m, InfoPane i) {
 		model = m;
 		title = "";
 		names = new String[model.getData().keySet().size()];
 		createNames();
+		addMouseListener(this);
+		info = i;
 	 }
 
 	public void createNames(){
@@ -287,11 +291,55 @@ public class CanvasPane extends JPanel implements ViewController {
     	
 	    }
     }
-    for(VertRect v : vertBars)
-    	System.out.println(v.toString());
+    
+    
+    //for(VertRect v : vertBars)
+    	//System.out.println(v.toString());
   }
 	
 	public void update(){
+		
+	}
+
+	//implement mouse event for clicking on the bar chart
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		for(VertRect v : vertBars)
+			if(v.getRect().contains(e.getX(), e.getY())){
+				clickedVertRect = new VertRect(v.getRect(),v.getCountry(),v.getAttr1(),v.getAttr2(),
+						v.getValAttr1(),v.getValAttr2());
+			}
+		/*String s = clickedVertRect.getCountry() + "\n" +
+				   clickedVertRect.getAttr1() + ": " + clickedVertRect.getValAttr1() + "\n" +
+				   clickedVertRect.getAttr2() + ": " + clickedVertRect.getValAttr2();
+		info.getInfo().setText(s);*/
+		System.out.println("the x is " + e.getX() + " and the y is " + e.getY());
+		System.out.println(clickedVertRect);
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -37,9 +37,12 @@ public class MainFrame extends JFrame {
 		panel.add(sliders);
 		
 	
+		//add infoPane to children
+		InfoPane info = new InfoPane(model);
+		info.setVisible(true);
+		//model.addChildren(info);
 		
-		
-		CanvasPane canvas = new CanvasPane(model);
+		CanvasPane canvas = new CanvasPane(model, info);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		
 		//model.addChildren(canvas);
@@ -49,17 +52,14 @@ public class MainFrame extends JFrame {
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
 		
-		JPanel textLegend = new JPanel();
+		/*JPanel textLegend = new JPanel();
 		textLegend.setLayout(new GridLayout(2,1));
 		textLegend.add(new LegendPane());
 		
-		//add infoPane to children
-		InfoPane info = new InfoPane(model);
-		//model.addChildren(info);
 		textLegend.add(info);  
-		textLegend.setVisible(true);
+		textLegend.setVisible(true);*/
 		
-		getContentPane().add(textLegend, BorderLayout.EAST);
+		getContentPane().add(info, BorderLayout.SOUTH);
 
 		this.pack();
 		this.setLocationRelativeTo(null); //this will center the main window on the screen :D
