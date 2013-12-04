@@ -121,7 +121,7 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 	
 	
 
-	public CanvasPane(Model m, InfoPane i) {
+	public CanvasPane(Model m, InfoPane i, SliderView s) {
 		model = m;
 		title = "";
 		names = new String[model.getData().keySet().size()];
@@ -145,9 +145,10 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 		valuesForX = new ArrayList<Double>();
 	
 		
-		for (String key : model.getData().keySet())
-			valuesForY.add(model.getData().get(key).get(selectedItem1));
-		
+		for (String key : model.getData().keySet()){
+			valuesForY.add(model.getData().get(key).get(selectedItem1+1));
+			System.out.println(model.getData().get(key));
+		}
 		//System.out.println(valuesY);
 		
 		for (String key : model.getData().keySet())
@@ -198,6 +199,7 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 	    int valueX = i * barWidth + 1;
 	    int valueY = top;
 	    int height = (int) (valuesForY.get(i) * scale);
+	    System.out.println("scale = " + scale);
 	    if (valuesForY.get(i) >= 0)
 	    	valueY += (int) ((maxValue - valuesForY.get(i)) * scale);
 	    else {
@@ -314,9 +316,13 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 				   clickedVertRect.getAttr1() + ": " + clickedVertRect.getValAttr1() + "\n" +
 				   clickedVertRect.getAttr2() + ": " + clickedVertRect.getValAttr2();
 		
-		System.out.println(info == null);
-		//info.getInfo().setText(s);
+	
+		info.getInfo().setText(s);
+		System.out.println(	info.getInfo().getText());
+		info.remove(info.getInfo());
+		info.add(info.getInfo());
 		
+		;
 		System.out.println("the x is " + e.getX() + " and the y is " + e.getY());
 		System.out.println(clickedVertRect);
 		

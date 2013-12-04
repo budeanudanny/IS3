@@ -8,11 +8,18 @@ import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
 	public MainFrame() {
+		
+		
+		
+		
+		
 		
 		//get screen resolution to create main window accordingly
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,12 +44,14 @@ public class MainFrame extends JFrame {
 		panel.add(sliders);
 		
 	
+		
+		
 		//add infoPane to children
 		InfoPane info = new InfoPane(model);
 		info.setVisible(true);
 		//model.addChildren(info);
 		
-		CanvasPane canvas = new CanvasPane(model, info);
+		CanvasPane canvas = new CanvasPane(model, info, sliders);
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		
 		//model.addChildren(canvas);
@@ -59,14 +68,18 @@ public class MainFrame extends JFrame {
 		textLegend.add(info);  
 		textLegend.setVisible(true);*/
 		
-		getContentPane().add(info, BorderLayout.EAST);
-
+		getContentPane().add(info, BorderLayout.SOUTH);
 		this.pack();
 		this.setLocationRelativeTo(null); //this will center the main window on the screen :D
 		this.setVisible(true);
 		
 	}
 	
+public void paintAttribute(JTextArea i){
+		
+		this.getContentPane().add(i, BorderLayout.SOUTH);
+		i.repaint();
+	}
 	
 	public static void main(String args[]){
 		

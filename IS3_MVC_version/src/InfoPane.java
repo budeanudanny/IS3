@@ -9,14 +9,14 @@ import javax.swing.JTextPane;
 
 public class InfoPane extends JPanel implements ViewController{
 	private Model model;
-	private JTextArea info;
+	protected JTextArea info = new JTextArea();
 	
 	InfoPane(Model m){
 		model=m;
-		JTextArea info = new JTextArea("Country: \n" + "Attribute1: \n" + "Attribute2: ");
+		JTextArea info = new JTextArea("");
 		this.add(info);
 		this.setVisible(true);
-		//info.setEditable(false);
+		this.info.setEditable(false);
 	}
 	
 	
