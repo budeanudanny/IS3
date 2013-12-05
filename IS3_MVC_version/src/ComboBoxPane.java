@@ -73,17 +73,29 @@ public class ComboBoxPane extends JPanel {
 				index = 6;
 			else if (value.equals("Net primary school enrolment ratio (%)"))
 				index = 7;
-			else if (value.equals("Team Size"))
+			else if (value.equals("Team Size")){
 				index = 8;//de verificat TOATEEEEE... aAAAaaaAAAa
-			else if (value.equals("Gold medals"))
+				sliders.createSlider(0, 600, 100);
+			}
+			else if (value.equals("Gold medals")){
 				index = 9;
-			else if (value.equals("Silver medals"))
+				sliders.createSlider(0, 50, 5);
+			}
+			else if (value.equals("Silver medals")){
 				index = 10;
-			else if (value.equals("Bronze medals"))
+				sliders.createSlider(0, 40, 5);
+			}
+			else if (value.equals("Bronze medals")){
 				index = 11;
-			else if (value.equals("Total number of medals"))
+				sliders.createSlider(0, 40, 5);
+			}
+			else if (value.equals("Total number of medals")){
 				index = 12;
-			//else {parent.repaint(); return;}
+				sliders.createSlider(0, 120, 10);
+			}
+			
+			{//vedem noi
+				}
 			
 			
 			
@@ -94,14 +106,14 @@ public class ComboBoxPane extends JPanel {
 			} */
 			
 			if (b.getName().compareTo("box1")==0){
-				sliders.update("b1",index);
+				//sliders.update("b1",index);
 				System.out.println("sel item =" + index);
 				parent.setSelectedItem1(index);
 				model.setSelectedYItem(index);
 			}
 			
 			else{
-				sliders.update("b2", index);
+				//sliders.update("b2", index);
 				parent.setSelectedItem2(index);
 				model.createOXOrderedCountries(index); // create my new list
 				parent.createNames(-1,-1);

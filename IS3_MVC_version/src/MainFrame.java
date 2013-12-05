@@ -53,6 +53,7 @@ public class MainFrame extends JFrame {
 		
 		//add infoPane to children
 		InfoPane info = new InfoPane(model);
+		info.setPreferredSize(new Dimension(30,50));
 		info.setVisible(true);
 		//model.addChildren(info);
 		
@@ -74,17 +75,16 @@ public class MainFrame extends JFrame {
 		JPanel textLegend = new JPanel();
 		textLegend.setLayout(new BorderLayout());
 		//leg.setBackground(Color.GRAY);
-		textLegend.add("North",leg);
+		textLegend.add(leg, BorderLayout.WEST);
 		
 		
 		//info.setBackground(Color.GRAY);
 		
-		textLegend.add("South",info);  
+		textLegend.add(info, BorderLayout.CENTER);  
 		textLegend.setVisible(true);
 
 		getContentPane().add(textLegend, BorderLayout.SOUTH);
 		
-		//getContentPane().add(info, BorderLayout.SOUTH);
 		this.pack();
 		this.setLocationRelativeTo(null); //this will center the main window on the screen :D
 		this.setVisible(true);

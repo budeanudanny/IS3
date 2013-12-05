@@ -1,6 +1,8 @@
 
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +17,7 @@ public class SliderView extends JPanel {
 	
     RangeSlider jSlider1;
     RangeSlider  jSlider2;
+    JPanel panel1, panel2;
     Model model;
     private int minX,minY,maxX,maxY;
     CanvasPane parent;
@@ -55,28 +58,56 @@ public class SliderView extends JPanel {
 	SliderView(Model m, CanvasPane cp){
     	model=m;
     	parent = cp;
-    	this.setLayout(new GridLayout(2,1));
-    	
+    	this.setLayout(new BorderLayout());
+ //   	this.setMaximumSize(new Dimension(1000,100));
     	jSlider1 = new RangeSlider();
-    	jSlider1.setMajorTickSpacing(0);
+		jSlider1.setPreferredSize(new Dimension(920, 50));
+  /*  	jSlider1.setMajorTickSpacing(20);
     	jSlider1.setPaintLabels(true);
     	jSlider1.setPaintTicks(true);
     	jSlider1.addChangeListener(new Modified());
-    	jSlider1.setName("slider1");
+    	jSlider1.setName("slider1"); */
+    	panel1= new JPanel();
+    	//panel1.setMaximumSize(new Dimension(500,50));
+    	panel1.add(jSlider1);
         jSlider2 = new RangeSlider();
-        jSlider2.setMajorTickSpacing(0);
+        jSlider2.setMajorTickSpacing(20);
 		jSlider2.setPaintTicks(true);
         jSlider2.setPaintLabels(true);
     	jSlider2.addChangeListener(new Modified());
     	jSlider2.setName("slider2");
-        this.add(jSlider1);
-        this.add(jSlider2);
+    	panel2 = new JPanel();
+    	panel2.add(jSlider2);
+    	panel2.setVisible(false);
+        this.add(panel1, BorderLayout.CENTER);
+        this.add(panel2, BorderLayout.SOUTH);
         
         this.setVisible(true);
         
     }
+	
+	public void createSlider(int min, int max, int interval){
+		this.panel1.removeAll();
+		this.panel1.revalidate();
+		this.repaint();
+		
+		RangeSlider slider1= new RangeSlider(min, max);
+		slider1.setPreferredSize(new Dimension(920, 50));
+		slider1.setMajorTickSpacing(interval);
+		slider1.setPaintLabels(true);
+		slider1.setPaintTicks(true);
+		slider1.addChangeListener(new Modified());
+		slider1.setName("slider1");
+		
+		this.panel1.add(slider1);
+		this.panel1.revalidate();
+		this.panel1.repaint();
+		
+		this.revalidate();
+		this.repaint();
+	}
 
-    public void update(String box, int value){
+  /*  public void update(String box, int value){
     	int min=0;
     	int max=0;
     	int interval=0;
@@ -170,7 +201,7 @@ public class SliderView extends JPanel {
     	}
       	
     }
-    
+    */
 
     private class Modified implements ChangeListener{
     	
