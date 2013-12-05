@@ -24,6 +24,7 @@ public class Model {
 		loadFile(file);
 	}
 	
+	//sort the vertical bars after the second combo box
 	protected void createOXOrderedCountries(int index){
 		TreeSet<Double> ts = new TreeSet<Double>();
 		OXOrderedCountries = new ArrayList<String>();
@@ -109,6 +110,7 @@ public class Model {
 	     }
 	 }
 
+	//self generated getters and setters
 	public Hashtable<String, ArrayList<Double>> getData() {
 		return data;
 	}
@@ -121,6 +123,7 @@ public class Model {
 		selectedYItem = i;
 	}
 
+	//helper method for updating the restricted hashtable
 	public void updateRestData(int min, int max){
 		restrictedData = new Hashtable<String, ArrayList<Double>>();
 		for (String key : data.keySet()){
@@ -133,6 +136,8 @@ public class Model {
 		
 		
 	}
+	
+	//getters and setters
 	public void setData(Hashtable<String, ArrayList<Double>> data) {
 		this.data = data;
 	}

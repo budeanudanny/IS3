@@ -40,6 +40,8 @@ public class MainFrame extends JFrame {
 		Model model = new Model("Country_data.csv");
 		//System.out.println(model.getData().toString());
 		this.setTitle("Data Visualizer");
+		
+		//set the main window size to fit the screen with an adjustment of 50 pixels
 		this.setPreferredSize(new Dimension(width-50,height-50));
 		//this.setResizable(false);  //in case we want to not make it resizable and not bother with dynamically resizable
 		//components even though the bar chart is behaving like that if you resize the window
