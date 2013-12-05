@@ -13,6 +13,9 @@ public class LegendPane extends JPanel {
 
 	private Image img;
 	
+	/*
+	 * panel that displays an image representing the legend of the colours used
+	 */
 	
 	 public LegendPane(String img) {  
 		    this(new ImageIcon(img).getImage());  

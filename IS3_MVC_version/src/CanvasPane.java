@@ -27,7 +27,6 @@ public class CanvasPane extends JPanel implements MouseListener {
 
 
 	//class in which we store each vertical bar that is created alongside with its properties
-	//to make it easier to extract information for the info pane and for the sorting according to the second attribute
 	class VertRect{
 
 		protected Rectangle rect;
@@ -48,8 +47,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 
 
 		}
-		
-		//default constructor
+
 		protected VertRect(){
 			rect = null;
 			country = "none";
@@ -58,8 +56,6 @@ public class CanvasPane extends JPanel implements MouseListener {
 			valAttr1 = 0;
 			valAttr2 = 0;
 		}
-		
-		//automatically generated getters and setters for the VertRect class
 		public Rectangle getRect() {
 			return rect;
 		}
@@ -107,8 +103,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 		public void setValAttr2(double valAttr2) {
 			this.valAttr2 = valAttr2;
 		}
-		
-		@Override
+
 		public String toString(){
 			String s = "";
 			s = s + getRect() + ", " + getCountry() + ", " + getAttr1() + ", " + getValAttr1() 
@@ -117,7 +112,6 @@ public class CanvasPane extends JPanel implements MouseListener {
 		}
 	}
 
-	//automatically generated getters and setters
 	public void setSelectedItem1(int selectedItem1) {
 		this.selectedItem1 = selectedItem1;
 	}
@@ -135,7 +129,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 	}
 
 
-	//constructor for the canvas pane
+
 	public CanvasPane(Model m, InfoPane i) {
 		model = m;
 		title = "";
@@ -145,9 +139,9 @@ public class CanvasPane extends JPanel implements MouseListener {
 
 		info = i;
 	}
-	
-	//helper method for creating the country name labels
+
 	public void createNames(int minY, int maxY){
+		//TODO: aci trebe sa bagam si info din slidere
 		int k = 0;
 		names = new String[1000];
 		if (minY == -1 && maxY == -1)
@@ -160,7 +154,6 @@ public class CanvasPane extends JPanel implements MouseListener {
 					names[k++] = key;
 	}
 
-	//helper method to help create the restricted hashtable when modifying the range
 	public void createValues(int minY, int maxY, int minX, int maxX){
 		if (selectedItem1 == -1 || selectedItem2 == -1)
 			return;
@@ -182,23 +175,16 @@ public class CanvasPane extends JPanel implements MouseListener {
 					if(key.equals(s))
 						if (model.getData().get(key).get(selectedItem1-1)<=maxY && model.getData().get(key).get(selectedItem1-1) >=minY)
 							{valuesForY.add(model.getData().get(key).get(selectedItem1-1));
-							System.out.println("added");
+
 							
 						}
-						else{System.out.println(model.getData().get(key).get(selectedItem1-1));}
+						else{}
 					else continue;
 				}
 		
 		}
 
-		//System.out.println(valuesY);
-        // TODO asta nu prea face mare lucru pt ca nu e legat sliderul
-		// fie legam si aici fie il lasam asa dar tot as vrea o sortare
-		// pe axa ox, altfel e degeaba.
-		for (String key : model.getData().keySet())
-			valuesForX.add(model.getData().get(key).get(selectedItem2));
 
-		//System.out.println(valuesX);
 	
 	}
 
@@ -214,13 +200,12 @@ public class CanvasPane extends JPanel implements MouseListener {
 			if (maxValue < valuesForY.get(i))
 				maxValue = valuesForY.get(i);
 		}
-		//get the size of the component in which we draw the bar chart
+
 		Dimension d = getSize();
 		int clientWidth = d.width;
 		int clientHeight = d.height;
 		int barWidth = clientWidth / valuesForY.size();
 
-		//set fonts for labels, we ended up not using this because it got too overcrowded
 		Font titleFont = new Font("SansSerif", Font.BOLD, 20);
 		FontMetrics titleFontMetrics = g.getFontMetrics(titleFont);
 		Font labelFont = new Font("SansSerif", Font.PLAIN, 10);
@@ -373,12 +358,10 @@ public class CanvasPane extends JPanel implements MouseListener {
 
 
 		;
-		System.out.println("the x is " + e.getX() + " and the y is " + e.getY());
-		System.out.println(clickedVertRect);
+
 
 	}
-	
-	//methods that needed to be stubbed so that we could implement the mouse listener
+
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub

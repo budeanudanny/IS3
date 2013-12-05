@@ -34,6 +34,9 @@ public class InfoPane extends JPanel{
 		info.setFont(font);
 	    info.setBorder(border);
 
+	    /*
+	     * add to panel and make it visible
+	     */
         this.add(info);
 		this.setVisible(true);
 		this.info.setEditable(false);
