@@ -105,6 +105,8 @@ public class ComboBoxPane extends JPanel {
 			else{
 				sliders.update("b2", index);
 				parent.setSelectedItem2(index);
+				model.createOXOrderedCountries(index); // create my new list
+				parent.createNames(-1,-1);
 				}
 			
 			//after both options in the combo boxes have been selected pass the values towards the canvas pane

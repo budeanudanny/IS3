@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
 public class Model {
 
@@ -15,10 +17,31 @@ public class Model {
 	protected Hashtable<String, ArrayList<Double>> data = new Hashtable<String, ArrayList<Double>>();
 	protected ArrayList<String> headers = new ArrayList<String>();
 	protected Hashtable<String, ArrayList<Double>> restrictedData = new Hashtable<String, ArrayList<Double>>();
+	protected ArrayList<String> OXOrderedCountries ;
+	
 	public Model(String filename){
 		file=filename;
 		loadFile(file);
 	}
+	
+	protected void createOXOrderedCountries(int index){
+		TreeSet<Double> ts = new TreeSet<Double>();
+		OXOrderedCountries = new ArrayList<String>();
+		for (String key : data.keySet()){
+			ts.add( data.get(key).get(index) );
+		}
+		Iterator<Double> it = ts.iterator();
+		while(it.hasNext()){
+			double d = it.next();
+			for(String key: data.keySet()){
+				if(data.get(key).get(index) == d){
+					OXOrderedCountries.add(key);
+				}	
+			}
+		}
+		System.out.println(OXOrderedCountries);
+	}
+	
 	/*
 	public void addChildren(ViewController v){
 		children.add(v);

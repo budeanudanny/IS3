@@ -2,15 +2,18 @@
 
 import javax.swing.JFrame;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import java.awt.BorderLayout;
 
@@ -58,6 +61,7 @@ public class MainFrame extends JFrame {
 		panel.add(sliders);
 		
 		ComboBoxPane comboBox = new ComboBoxPane(model, sliders, canvas);
+		
 		panel.add(comboBox);
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
@@ -66,7 +70,11 @@ public class MainFrame extends JFrame {
 		
 		JPanel textLegend = new JPanel();
 		textLegend.setLayout(new BorderLayout());
+		//leg.setBackground(Color.GRAY);
 		textLegend.add("North",leg);
+		
+		
+		//info.setBackground(Color.GRAY);
 		
 		textLegend.add("South",info);  
 		textLegend.setVisible(true);
@@ -83,8 +91,9 @@ public class MainFrame extends JFrame {
 	}
 	
 public void paintAttribute(JTextArea i){
-		
+
 		this.getContentPane().add(i, BorderLayout.SOUTH);
+
 		i.repaint();
 	}
 	

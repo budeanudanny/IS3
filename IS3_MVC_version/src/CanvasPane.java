@@ -134,7 +134,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 		model = m;
 		title = "";
 		names = new String[model.getData().keySet().size()];
-		createNames(-1,-1);
+		
 		addMouseListener(this);
 
 		info = i;
@@ -145,10 +145,10 @@ public class CanvasPane extends JPanel implements MouseListener {
 		int k = 0;
 		names = new String[1000];
 		if (minY == -1 && maxY == -1)
-			for(String key : model.getData().keySet())
+			for(String key : model.OXOrderedCountries)
 				names[k++] = key;
 		else		
-			for(String key : model.getData().keySet())
+			for(String key : model.OXOrderedCountries)
 				if(model.getData().get(key).get(selectedItem1-1)<=maxY && model.getData().get(key).get(selectedItem1-1) >=minY)
 					
 					names[k++] = key;
@@ -161,30 +161,38 @@ public class CanvasPane extends JPanel implements MouseListener {
 		valuesForY = new ArrayList<Double>();
 		valuesForX = new ArrayList<Double>();
 
-		if (minY == maxY)
-			for (String key : model.getData().keySet())
-				valuesForY.add(model.getData().get(key).get(selectedItem1-1));
+		if (minY == maxY){
+			for(String s: model.OXOrderedCountries)
+				for (String key : model.getData().keySet())
+					if(key.equals(s)){
+						valuesForY.add(model.getData().get(key).get(selectedItem1-1));
+						break;
+					}
+		}
 		else{
-			for (String key : model.getData().keySet()){
-
-				if (model.getData().get(key).get(selectedItem1-1)<=maxY && model.getData().get(key).get(selectedItem1-1) >=minY)
-					{valuesForY.add(model.getData().get(key).get(selectedItem1-1));
-					System.out.println("added");}
-
-				else{System.out.println(model.getData().get(key).get(selectedItem1-1));}
-			}
+			for(String s: model.OXOrderedCountries)
+				for (String key : model.getData().keySet()){
+					if(key.equals(s))
+						if (model.getData().get(key).get(selectedItem1-1)<=maxY && model.getData().get(key).get(selectedItem1-1) >=minY)
+							{valuesForY.add(model.getData().get(key).get(selectedItem1-1));
+							System.out.println("added");
+							
+						}
+						else{System.out.println(model.getData().get(key).get(selectedItem1-1));}
+					else continue;
+				}
+		
 		}
 
-
-
-
-
 		//System.out.println(valuesY);
-
+        // TODO asta nu prea face mare lucru pt ca nu e legat sliderul
+		// fie legam si aici fie il lasam asa dar tot as vrea o sortare
+		// pe axa ox, altfel e degeaba.
 		for (String key : model.getData().keySet())
 			valuesForX.add(model.getData().get(key).get(selectedItem2));
 
 		//System.out.println(valuesX);
+	
 	}
 
 	public void paintComponent(Graphics g) {
