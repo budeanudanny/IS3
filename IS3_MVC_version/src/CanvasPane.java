@@ -256,7 +256,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 						model.getData().get(names[i]).get(selectedItem2)));
 
 			}else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==2){
-				// 2 = Africa = Black *wink wink*
+				// 2 = Africa = Black
 				Rectangle r = new Rectangle(valueX, valueY, barWidth -2, height);
 				g.setColor(Color.black);
 				g.fillRect(valueX, valueY, barWidth - 2, height);
@@ -298,7 +298,7 @@ public class CanvasPane extends JPanel implements MouseListener {
 						model.getData().get(names[i]).get(selectedItem2)));
 
 			}else if(model.getData().get(names[i]).get(model.getData().get(names[i]).size()-1)==5){
-				// 5 = Asia = Yellow *wink wink*
+				// 5 = Asia = Yellow
 				Rectangle r = new Rectangle(valueX, valueY, barWidth -2, height);
 				g.setColor(Color.yellow);
 				g.fillRect(valueX, valueY, barWidth - 2, height);

@@ -24,6 +24,7 @@ public class Model {
 		loadFile(file);
 	}
 	
+	//helper method meant to sort the data according to the second combo box option
 	protected void createOXOrderedCountries(int index){
 		TreeSet<Double> ts = new TreeSet<Double>();
 		OXOrderedCountries = new ArrayList<String>();
