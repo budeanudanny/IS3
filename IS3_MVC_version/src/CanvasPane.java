@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
-public class CanvasPane extends JPanel implements ViewController, MouseListener {
+public class CanvasPane extends JPanel implements MouseListener {
 
 	private Model model;
 
@@ -330,10 +330,6 @@ public class CanvasPane extends JPanel implements ViewController, MouseListener 
 
 		//for(VertRect v : vertBars)
 		//System.out.println(v.toString());
-	}
-
-	public void update(){
-
 	}
 
 	//implement mouse event for clicking on the bar chart

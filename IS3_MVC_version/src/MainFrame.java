@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
@@ -60,18 +61,24 @@ public class MainFrame extends JFrame {
 		panel.add(comboBox);
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
+		LegendPane leg = new LegendPane(new ImageIcon("Legend.png").getImage());
+		leg.setVisible(true);
 		
-		/*JPanel textLegend = new JPanel();
-		textLegend.setLayout(new GridLayout(2,1));
-		textLegend.add(new LegendPane());
+		JPanel textLegend = new JPanel();
+		textLegend.setLayout(new BorderLayout());
+		textLegend.add("North",leg);
 		
-		textLegend.add(info);  
-		textLegend.setVisible(true);*/
+		textLegend.add("South",info);  
+		textLegend.setVisible(true);
+
+		getContentPane().add(textLegend, BorderLayout.SOUTH);
 		
-		getContentPane().add(info, BorderLayout.SOUTH);
+		//getContentPane().add(info, BorderLayout.SOUTH);
 		this.pack();
 		this.setLocationRelativeTo(null); //this will center the main window on the screen :D
 		this.setVisible(true);
+		
+    
 		
 	}
 	

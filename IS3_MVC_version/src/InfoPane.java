@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-public class InfoPane extends JPanel implements ViewController{
+public class InfoPane extends JPanel{
 	private Model model;
 	protected JTextArea info = new JTextArea();
 	
@@ -32,8 +32,4 @@ public class InfoPane extends JPanel implements ViewController{
 	}
 
 
-
-	public void update(){
-		
-	}
 }

@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 public class Model {
 
 	private int selectedYItem;
-	private ArrayList children;
+	//private ArrayList children;
 	private String file;
 	protected Hashtable<String, ArrayList<Double>> data = new Hashtable<String, ArrayList<Double>>();
 	protected ArrayList<String> headers = new ArrayList<String>();
@@ -19,11 +19,11 @@ public class Model {
 		file=filename;
 		loadFile(file);
 	}
-	
+	/*
 	public void addChildren(ViewController v){
 		children.add(v);
 	}
-
+*/
 	//helper method to create the headers arrayList
 	protected void readHeader(String line, ArrayList headers) {
 	        // create a tokenizer to parse the line
@@ -97,9 +97,7 @@ public class Model {
 	public void setSelectedYItem(int i){
 		selectedYItem = i;
 	}
-	
-	
-	
+
 	public void updateRestData(int min, int max){
 		restrictedData = new Hashtable<String, ArrayList<Double>>();
 		for (String key : data.keySet()){

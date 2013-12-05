@@ -24,73 +24,33 @@ public class SliderView extends JPanel {
 		return minX;
 	}
 
-
-
-
-
-
 	public void setMinX(int minX) {
 		this.minX = minX;
 	}
-
-
-
-
-
 
 	public int getMinY() {
 		return minY;
 	}
 
-
-
-
-
-
 	public void setMinY(int minY) {
 		this.minY = minY;
 	}
-
-
-
-
-
 
 	public int getMaxX() {
 		return maxX;
 	}
 
-
-
-
-
-
 	public void setMaxX(int maxX) {
 		this.maxX = maxX;
 	}
-
-
-
-
-
 
 	public int getMaxY() {
 		return maxY;
 	}
 
-
-
-
-
-
 	public void setMaxY(int maxY) {
 		this.maxY = maxY;
 	}
-
-
-
-
-
 
 	SliderView(Model m, CanvasPane cp){
     	model=m;
@@ -115,12 +75,7 @@ public class SliderView extends JPanel {
         this.setVisible(true);
         
     }
-    
-   
-    
-    
-    
-    
+
     public void update(String box, int value){
     	int min=0;
     	int max=0;
@@ -195,10 +150,7 @@ public class SliderView extends JPanel {
     		max= 120;
     		interval = 20;
     	}
-    	
-    	
-    	
-    	
+
     	if (box.compareTo("b1")==0){
     		jSlider1.setMinimum(min);
     		jSlider1.setMaximum(max);
@@ -219,7 +171,7 @@ public class SliderView extends JPanel {
       	
     }
     
-    
+
     private class Modified implements ChangeListener{
     	
 
