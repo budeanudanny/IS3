@@ -83,9 +83,7 @@ public class ComboBoxPane extends JPanel {
 				index = 11;
 			else if (value.equals("Total number of medals"))
 				index = 12;
-			
-			{//vedem noi
-				}
+			//else {parent.repaint(); return;}
 			
 			
 			

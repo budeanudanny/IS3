@@ -18,6 +18,9 @@ import javax.swing.border.Border;
 import java.awt.BorderLayout;
 
 public class MainFrame extends JFrame {
+	
+	
+	
 	public MainFrame() {
 		
 		
@@ -89,6 +92,12 @@ public class MainFrame extends JFrame {
     
 		
 	}
+/*	
+public void clearCanvas(CanvasPane c){
+	this.getContentPane().add(c, BorderLayout.SOUTH);
+
+	c.repaint();
+}
 	
 public void paintAttribute(JTextArea i){
 
@@ -96,7 +105,7 @@ public void paintAttribute(JTextArea i){
 
 		i.repaint();
 	}
-	
+	*/
 	public static void main(String args[]){
 		
 		java.awt.EventQueue.invokeLater(new Runnable() {

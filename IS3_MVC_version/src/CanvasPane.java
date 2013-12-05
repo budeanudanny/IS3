@@ -359,9 +359,10 @@ public class CanvasPane extends JPanel implements MouseListener {
 
 
 		info.getInfo().setText(s);
-		System.out.println(	info.getInfo().getText());
+		//System.out.println(	info.getInfo().getText());
 		info.remove(info.getInfo());
 		info.add(info.getInfo());
+
 
 		;
 		System.out.println("the x is " + e.getX() + " and the y is " + e.getY());

@@ -1,6 +1,7 @@
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,12 +13,26 @@ import javax.swing.border.Border;
 
 public class InfoPane extends JPanel{
 	private Model model;
-	protected JTextArea info = new JTextArea();
+	protected JTextArea info ;
 	
 	InfoPane(Model m){
 		model=m;
-		JTextArea info = new JTextArea("");
+		info = new JTextArea("");
 		
+		Border border = BorderFactory.createLineBorder(Color.black);
+	    
+	    /*
+	     * To set JTextField's border use,
+	     * void setBorder(Border b)
+	     * method.
+	     */
+	   
+	    
+		
+		info.setForeground(Color.BLACK);
+		Font font = new Font("Verdana", Font.BOLD, 12);
+		info.setFont(font);
+	    info.setBorder(border);
 
         this.add(info);
 		this.setVisible(true);
